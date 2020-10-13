@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .column {
+        float: left;
+        width: 15%;
+        padding: 0 10px;
+      }
+      .row2 {
+        margin: 1rem 2rem;
+        width: 1400px;
+        display: inline-block;
+        border: 0.1rem solid black;
+      }
+      h1 {
+        text-align: center;
+      }
+      button {
+        margin: 0.1rem;
+        padding: 0.1rem;
+        width: 6rem;
+      }
+      .row {
+        margin: 0 2rem;
+        display: inline-block;
+        width: 900px;
+        border: 0.1rem solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1 style="font-size: 3rem">Car list</h1>
+      <div class="row2">
+        <div class="column">
+          <h1>BMW</h1>
+          <button onclick=" bmw.maxSpeed(220)">Speed</button>
+          <button onclick=" bmw.break(3)">Break</button>
+          <button onclick=" bmw.condition('Italy')">Condition</button>
+          <button onclick=" bmw.CarsPrice(20000)">Price</button>
+          <button onclick=" bmw.AirConditioner(true)">AirConditioner</button>
+          <button
+            onclick=" bmw.CarExtras('mp3, Fog lights, Parking Sensors, Bluetooth, Leather Seats')"
+          >
+            Extras
+          </button>
+        </div>
+        <div class="column">
+          <h1>VW</h1>
+          <button onclick=" volkswagen.maxSpeed(180)">Speed</button>
+          <button onclick=" volkswagen.break(5)">Break</button>
+          <button onclick=" volkswagen.condition('Germany')">Condition</button>
+          <button onclick=" volkswagen.CarsPrice(15000)">Price</button>
+          <button onclick=" volkswagen.AirConditioner(false)">
+            AirConditioner
+          </button>
+          <button
+            onclick=" volkswagen.CarExtras('mp3, Keyless Entry, Buy a Spare Wheel')"
+          >
+            Extras
+          </button>
+        </div>
+        <div class="column">
+          <h1>Opel</h1>
+          <button onclick=" opel.maxSpeed(140)">Speed</button>
+          <button onclick=" opel.break(8)">Break</button>
+          <button onclick=" opel.brandNew('Latvia')">Condition</button>
+          <button onclick=" opel.CarsPrice(3400)">Price</button>
+          <button onclick=" opel.AirConditioner(false)">AirConditioner</button>
+          <button onclick=" opel.CarExtras('mp3, CD, Xenon/LED lights')">
+            Extras
+          </button>
+        </div>
+        <div class="column">
+          <h1>Mazda</h1>
+          <button onclick=" mazda.maxSpeed(179)">Speed</button>
+          <button onclick=" mazda.break(4)">Break</button>
+          <button onclick=" mazda.brandNew('Estonia')">Condition</button>
+          <button onclick=" mazda.CarsPrice(18000)">Price</button>
+          <button onclick=" mazda.AirConditioner(true)">AirConditioner</button>
+          <button
+            onclick=" mazda.CarExtras('mp3, Sat Nav, Parking Sensors, Bluetooth')"
+          >
+            Extras
+          </button>
+        </div>
+        <div class="column">
+          <h1>Renault</h1>
+          <button onclick=" renault.maxSpeed(135)">Speed</button>
+          <button onclick=" renault.break(6)">Break</button>
+          <button onclick=" renault.brandNew('USA')">Condition</button>
+          <button onclick=" renault.CarsPrice(2500)">Price</button>
+          <button onclick=" renault.AirConditioner(false)">
+            AirConditioner
+          </button>
+          <button
+            onclick=" renault.CarExtras('mp3, Fog lights, Parking Sensors')"
+          >
+            Extras
+          </button>
+        </div>
+        <div class="column">
+          <h1>Volvo</h1>
+          <button onclick=" volvo.maxSpeed(230)">Speed</button>
+          <button onclick=" volvo.break(4)">Break</button>
+          <button onclick=" volvo.brandNew('Denmark')">Condition</button>
+          <button onclick=" volvo.CarsPrice(25000)">Price</button>
+          <button onclick=" volvo.AirConditioner(true)">AirConditioner</button>
+          <button
+            onclick=" volvo.CarExtras('Sat Nav, Fog lights, Parking Sensors, Xenon/LED lights, Leather Seats')"
+          >
+            Extras
+          </button>
+        </div>
+      </div>
+      <div class="row">
+        <h2 style="text-align: center">Car description</h2>
+        <ul>
+          <p><strong>Top speed:</strong> <span id="speed"></span></p>
+          <p><strong>Break system:</strong> <span id="break"></span></p>
+          <p><strong>Condition:</strong> <span id="condition"></span></p>
+          <p><strong>Price:</strong> <span id="price"></span></p>
+          <p><strong>AirConditioner</strong>: <span id="conditioner"></span></p>
+          <p><strong>Extras: </strong><span id="extras"></span></p>
+        </ul>
+      </div>
+    </div>
+    <script>
+      class Car {
+        constructor(name) {
+          this.speed = 0;
+          this.name = name;
+        }
+        maxSpeed(speed) {
+          this.speed = speed;
+          document.getElementById(
+            "speed"
+          ).innerHTML = `${this.name.toUpperCase()} maximum speed is ${
+            this.speed
+          } km/h.`;
+        }
+        break(time) {
+          this.time = time;
+          document.getElementById(
+            "break"
+          ).innerHTML = `${this.name.toUpperCase()} can stop from 100 km/h to 0 km/h in ${
+            this.time
+          } s.`;
+        }
+        CarExtras(extras) {
+          this.extras = extras;
+          document.getElementById(
+            "extras"
+          ).innerHTML = `${this.name.toUpperCase()} are cupel cool extras like: ${
+            this.extras
+          }.`;
+        }
+        AirConditioner(conditioner) {
+          this.conditioner = conditioner;
+          if (this.conditioner == true) {
+            document.getElementById(
+              "conditioner"
+            ).innerHTML = `${this.name.toUpperCase()} have an air conditioner.`;
+          } else {
+            document.getElementById(
+              "conditioner"
+            ).innerHTML = `${this.name.toUpperCase()} don't have an air conditioner.`;
+          }
+        }
+      }
+      class UsedCar extends Car {
+        condition(country) {
+          this.country = country;
+          document.getElementById(
+            "condition"
+          ).innerHTML = `This ${this.name.toUpperCase()} old car but also weary popular in ${
+            this.country
+          }.`;
+        }
+        CarsPrice(price) {
+          this.price = price;
+          document.getElementById(
+            "price"
+          ).innerHTML = `${this.name.toUpperCase()} price is ${
+            this.price
+          }$. price is equal to cars condition`;
+        }
+      }
+
+      class NewCar extends Car {
+        condition(country) {
+          this.country = country;
+          document.getElementById(
+            "condition"
+          ).innerHTML = `This ${this.name.toUpperCase()} car is latest model and already popular in ${
+            this.country
+          }.`;
+        }
+        CarsPrice(price) {
+          this.price = price;
+          document.getElementById(
+            "price"
+          ).innerHTML = `${this.name.toUpperCase()} price is ${
+            this.price
+          }$. Yes, thats expensive, but this is car brand new.`;
+        }
+      }
+      let bmw = new NewCar("bmw");
+      let volkswagen = new NewCar("volkswagen");
+      let opel = new UsedCar("opel");
+      let mazda = new NewCar("mazda");
+      let renault = new UsedCar("Renault");
+      let volvo = new NewCar("Volvo");
+    </script>
+  </body>
+</html>
